@@ -1,0 +1,47 @@
+@charset "UTF-8";
+#loginF {
+	margin: 0 auto;
+	margin-top:150px;
+	height: 200px;
+	width: 400px;
+	background-color: #c0c0c0;
+	vertical-align: middle;
+}
+#loginF img{
+	height: 200px;
+}
+
+#loginI {
+	width: 200px;
+	height: 200px;
+	float: left;
+}
+
+#loginInput {
+	margin-top: 50px;
+	width: 200px;
+	height: 200px;
+	float: left;
+	vertical-align: middle;
+	text-align: center;
+}
+#loginInput input {
+	padding:0;
+	margin:0;
+	width: 90%;
+	height:30px;
+	box-sizing: border-box;
+	margin-bottom: 10px;
+}
+#loginInput button {
+	padding:0;
+	margin:0;
+	width: 45%;
+	height:30px;
+}
+#loginInput input[type=checkbox]{
+	text-align: left;
+	background-color: red;
+	width: 15px;
+	height: 15px;
+}

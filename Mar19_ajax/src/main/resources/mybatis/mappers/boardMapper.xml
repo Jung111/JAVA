@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board">
+	
+	<select id="list" resultType="boardDTO">
+		SELECT * FROM boardview LIMIT 10
+	</select>
+	
+	<select id="listh" resultType="HashMap">
+		SELECT * FROM boardview
+	</select>
+	
+	<select id="detail" parameterType="Integer" resultType="BoardDTO">
+		SELECT * FROM boardview WHERE board_no=#{no}
+	</select>
+	
+	<select id="update" parameterType="BoardDTO" resultType="BoardDTO">
+		SELECT * FROM boardview 
+		WHERE board_no=#{bno} AND member_no=#{member_no}
+	</select>
+
+	<insert id="write" parameterType="BoardDTO">
+		INSERT INTO board (board_title, board_content, member_no)
+		VALUES (#{board_title}, #{board_content}, #{member_no})
+	</insert>
+	
+	<insert id="write2" parameterType="HashMap">
+		INSERT INTO board (board_title, board_content, member_no)
+		VALUES (#{title}, #{content}, #{member_no})
+	</insert>
+	
+	<update id="update2" parameterType="Map">
+		UPDATE board SET 
+		board_title=#{title }, board_content=#{content }
+		WHERE board_no=#{bno } AND member_no=#{no }
+	</update>
+	
+	<delete id="delete" parameterType="Map">
+		DELETE FROM board WHERE board_no=#{bno } AND member_no=#{no }
+	</delete>
+	
+	<select id="comments" parameterType="Integer" resultType="Map">
+		SELECT cno, member_no, member_name, board_no, ccontent, cdate, clike
+		FROM commentsview
+		WHERE board_no=#{no }
+	</select>
+	
+	
+	
+	
+	
+	
+	
+</mapper>
