@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="log">
+
+	<select id="logList" parameterType="Map" resultType="Map">
+
+		SELECT 
+		(SELECT count(*) FROM logview 
+		WHERE lno >0
+
+		<if test="search != null">AND lno like CONCAT('%', #{search},'%')</if>
+		<if test="name != null">	AND lname likeCONCAT('%', #{name},'%')</if>
+		<if test="lcate !=null">AND lcate =#{lcate}</if>
+		<if test="lip !=null"> AND lip =#{lip}</if>
+		 )  as count,logview.*
+		 	FROM logview	
+		 	WHERE lno > 0
+		<if test="search != null">AND lno like CONCAT('%', #{search},'%')</if>
+		<if test="name != null">	AND lname likeCONCAT('%', #{name},'%')</if>
+		<if test="lcate !=null">AND lcate =#{lcate}</if>
+		<if test="lip !=null"> AND lip =#{lip}</if>
+		ORDER BY ldate DESC
+		LIMIT #{startPage},#{lastPage}
+	</select>
+	<select id="logListCount" resultType="Integet">
+		SELECT COUNT (*) FROM log
+	</select>
+	<select id="select01" resultType="Map">
+		SELECT lcate, lcatename, COUNT(*) as count FROM logview log GROUP BY lcate
+	</select>
+	<select id="tonggye" resultType="Map">
+		SELECT date_format(ldate,'%Y-%m') as 'ldate', count(0) as count
+		FROM log
+		WHERE lcate = 1
+		GROUP BY date_format(ldate, '%Y-%m)
+		ORDER BY date_format(ldate, '%Y-%m) DESC
+	</select>
+
+</mapper>

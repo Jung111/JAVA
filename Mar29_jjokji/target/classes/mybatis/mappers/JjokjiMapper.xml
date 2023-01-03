@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="jjokji">
+
+<select resultType="Map" parameterType="String" id="list">
+SELECT jno, songmno,
+(select member_name from member WHERE member_no = songmno) as songname,
+sumno, jtext, jsongdate, jildate, suchk
+FROM jjokji WHERE sumno = #{string } AND delchk = 'N' 
+</select>
+
+<select resultType="Map" parameterType="String" id="detail">
+SELECT jno, songmno,
+(select member_name from member WHERE member_no = songmno) as songname,
+sumno, jtext, jsongdate, jildate, suchk
+FROM jjokji WHERE jno = #{string } AND delchk = 'N' 
+</select>
+
+<update parameterType="String" id="delete">
+UPDATE jjokji SET delchk='Y'WHERE jno = #{dno } 
+</update>
+<update id="readCheck" parameterType="String">
+ UPDATE jjokji SET suchk ='Y' AND jildate =now()
+ WHERE jno =#{string}
+</update>
+<insert id="sendMsg" parameterType="Map">
+INSERT INTO jjokji (songmno ,sumno ,jtext)
+VALUES(#{songmno},#{wno},#{msg})
+</insert>
+</mapper>
