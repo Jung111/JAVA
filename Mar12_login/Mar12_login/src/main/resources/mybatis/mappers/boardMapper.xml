@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board">
+	
+	<select id="list" resultType="BoardDTO">
+		SELECT * FROM boardview
+	</select>
+	
+	<select id="listh" resultType="HashMap">
+		SELECT * FROM boardview
+	</select>
+	
+	<select id="detail" parameterType="Integer" resultType="BoardDTO">
+		SELECT * FROM boardview WHERE board_no=#{no}
+	</select>
+	
+	
+	
+</mapper>
