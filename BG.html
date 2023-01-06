@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<body>
+<div id=divv>
+<td id =div1>
+</td>
+</div>
+<h1> 빙고판!
+		<button onclick="click();">RETURN</button>
+		
+		
+	</h1>
+<style type="text/css">
+button {
+	margin-left: 5%;
+	color: orange;
+}
+
+tr {
+	align-content: center;
+	background: white;
+}
+
+h1 {
+	margin-left: 5%;
+	padding-left: 10%;
+}
+
+div {
+	padding-left: 10%;
+}
+
+table, td {
+	border: 1px solid #bcbcbc;
+}
+
+table {
+	width: 80%;
+	height: 250px;
+	background-color: red;'
+}
+</style>
+<meta charset="UTF-8">
+
+<title>Bingo let'go</title>
+
+</head>
+
+<script type="text/javascript">
+
+//배열 생성
+var arr =[];
+
+//배열1~25
+for (var i = 0; i < 25; i++) {
+	arr[i]=i+1;
+	 
+}
+
+//배열 섞는다
+arr.sort((a,b)=>{return  Math.random()-0.5} );
+//배열 보여주기/
+
+var tmp =`<table border="1px">`
+for (var i = 0; i <5; i++) {
+	tmp+= `<tr ><td ></td><td></td><td></td><td></td><td></td></tr>`;
+	
+}
+
+
+tmp+=`</table>`;
+div1 =arr;
+td = arr;
+
+var div1 = document.getElementById("divv").innerHTML = tmp;
+var tmp= document.getElementById("div1").innerHTML = td;
+
+</script>
+
+
+
+
+	
+
+
+	
+
+</body>
+</html>
