@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    #header > ul{
+        background-color: black;
+    }
+
+    #header > ul> li >a {
+        text-decoration: none;
+        font-size: 15pt;
+        color: black;
+        padding: 20px;
+        display: block;
+    }
+    #header > ul >li > a:hover{
+        color: rgb(128, 253, 4);
+
+    }
+    #header > ul > li {
+
+            list-style : none;
+            display : inline-block;
+    }
+        
+</style>
+<script>
+ function checkAll1(){
+    // alert("checkAll");
+//다른 모든 체크박스가 선택되어야한다 
+let chkarr = document.getElementsByTagName("input");
+
+// for (let i = 0; i < 5; i++) {
+//    chkarr[i].checked = true;
+//     }       
+// 다른 모든 체크박스가 해제 되어야한다 
+    
+    // for (let i = 0; i<5; i++) {
+    // chkarr[i].checked = false;
+    // }
+ 
+//모든 체크박스 선택 ,해제가 되게 해보자
+
+/**
+ * 
+ * 
+ * checked : input 태그 중 일부의 속성 
+ * 
+ * checkAll => 전체 선택 input 태그의 참조
+ * */
+
+    if(checkAll == false){ //모두 체크 
+		checkAll = true; 
+		for(var i=0; i<5;i++){ 
+			chkarr[i].checked = true;
+			document.getElementById("checkAll").checked = true;
+
+		} 
+	}else{ //모두 해제 
+		checkAll = false; 
+		for(var i=0; i<5;i++){ 
+			chkarr[i].checked = false;
+			document.getElementById("checkAll").checked = false;
+		}
+	}
+
+ }
+ // 글자 클릭때마다 해당 값 가져오기
+
+ function bk(){// 농구
+    let arr = document.getElementsByTagName("input");
+    arr = arr[1].value;
+    document.getElementById("text").innerText = arr;
+      
+ }
+ 
+ function bs(){// 야구
+    let arr = document.getElementsByTagName("input");
+    arr = arr[2].value;
+    document.getElementById("text").innerText = arr;
+      
+ }
+ 
+ function so(){// 축구
+    let arr = document.getElementsByTagName("input");
+    arr = arr[3].value;
+    document.getElementById("text").innerText = arr;
+      
+ }
+ 
+ function vb(){// 배구
+    let arr = document.getElementsByTagName("input");
+    arr = arr[4].value;
+    document.getElementById("text").innerText = arr;
+      
+ }
+        
+
+</script>
+<body>
+   <div id = "header">
+    
+    <ul>
+        <li><a id ='all'  href="#" > All sports </a></il><li>
+            <a id ='bk' href="#"> Bsketball </a></il><li> 
+            <a id ='bs' href="#"> Baseball </a></il><li>   
+            <a id ='so' href="#">  Soccer </a></il><li>
+            <a id ='vb' href="#">  Volleyball </a></il>
+
+        </ul>
+      
+        <input type="checkbox" id ='checkAll'name ='sports' onclick='checkAll1()'>운동 전체
+        <input type="checkbox" name ='sports' value=" 농구 , Bsketball " onclick="bk()">농구 
+        <input type="checkbox" name ='sports' value =" 야구, Baseball" onclick="bs()">야구
+        <input type="checkbox" name ='sports' value=" 축구 , Soccer" onclick="so()">축구
+        <input type="checkbox" name ='sports' value=" 배구, Volleyball" onclick="vb()">배구
+  
+
+
+       
+       <textarea id ="text" cols="200" rows="30">
+
+        </textarea>
+
+    </div >
+
+</body>
+</html>
